@@ -24,9 +24,13 @@ The ultimate goal of this project is to build a model that predicts the sentimen
 | variable      | meaning       |
 | ------------- |:-------------:|
 | sentiment | our target variable, created by sentiment analysis of NPR interviews |
-| episodes | each observation in our data is representative of each interview |
-| | |
-| | |
+| episode | each observation in our data is representative of each interview |
+| episode_id | identification number for each episode |
+| episode_date | date the episode was uploaded |
+| program | name of NPR program |
+| headline | article's headline |
+| is_host | whether the speaker is speaking as a host |
+| utterance | utterance text |
 
 <!-- ## Initial Questions
 

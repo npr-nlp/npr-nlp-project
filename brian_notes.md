@@ -17,6 +17,7 @@
     - Acquisition: 
         - merge utterances with the episodes csv. and maybe the headlines too.
         - (find another dataset of fake news? pot-mvp)
+        - include the steps and even the dates the files were downloaded in the 'Reproducibility' section
     - Prep
         - clean
             - lower case/accents/etc
@@ -24,17 +25,21 @@
         - tokenize, stem, lemmatized 
         - stopwords
         - bigrams
+        - include a MD file explaining clean/prep? 
     - Explore
         - Wordclouds-> break down by year? or for the time periods around big events?
-        - Clustering? Is there any cluster that makes intuitive sense?
+        - Clustering? Is there any cluster that makes intuitive sense?  Number of speakers in a given article, for instance?
         - Anomalies? Unexpected sentiment analysis results? 
         - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc
+        - Are there stopwords, outside of the standard, that could be removed to help identify the speaker?
     - Model
         - model sentiment analysis over time
         - Model speaker prediction
         - Iterate models with varying hyperparameters
+        - Explore the possibility of applying topic modeling--this would necessarily be unsupervised machine learning, and may be outside the scope of our project
     - Deliver
         - Definitely some nerdy audio to open things up with.
+        - Executive summary; all the headings in the Readme (be clear what is meant by 'recommendations' versus 'next steps')
         - Polished notebook and helper files
         - A little organization in the final repo--at a minimum, all files that aren't the final notebook and helper files could be stashed in a separate folder
 

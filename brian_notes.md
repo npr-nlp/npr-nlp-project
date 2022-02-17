@@ -5,13 +5,30 @@
 
 
 
-## What is your goal?: 
-## What is your target? What is one observation? Predict host/not_host
-What is going to take place in each stage of the pipeline? What is the minimally viable amount of work you can do in each stage?
-Acquisition
-Prep
-Explore
-Model
-Deliver
+## What is your goal?: Find out how the mood of the nation has evolved over twenty years based on public radio news broadcasts. Build a predictive model for mood at a given point in time; also predict who the speaker is; what program it belongs to; and possibly what news category.
+
+## What is your target? 
+    - Predict host/not_host. Predict sentiment (tsa)
+
+## What is one observation?
+    - We need to explore to see if aggregation is possible on a story/article basis, or other bases
+
+## What is going to take place in each stage of the pipeline? What is the minimally viable amount of work you can do in each stage?
+    - Acquisition: 
+        - merge utterances with the episodes csv. and maybe the headlines too.
+        - (find another dataset of fake news? pot-mvp)
+    - Prep
+        - clean
+            - lower case/accentss/etc
+        - missing data?
+        - tokenize, stem, lemmatized 
+        - stopwords
+    - Explore
+        - Wordclouds
+        - 
+    - Model
+    - Deliver
+
+
 What does your MVP look like? What are your team's need to haves vs nice to haves?
 Put answers to these questions in your standup doc (link in Google Classroom)

@@ -19,16 +19,30 @@
         - (find another dataset of fake news? pot-mvp)
     - Prep
         - clean
-            - lower case/accentss/etc
+            - lower case/accents/etc
         - missing data?
         - tokenize, stem, lemmatized 
         - stopwords
     - Explore
         - Wordclouds
-        - 
+        - Clustering? Is there any cluster that makes intuitive sense?
     - Model
+        - model sentiment analysis over time
+        - Model speaker prediction
+        - Iterate models with varying hyperparameters
     - Deliver
 
 
 What does your MVP look like? What are your team's need to haves vs nice to haves?
+
+
 Put answers to these questions in your standup doc (link in Google Classroom)
+
+
+## Initial Questions?
+    - Is it possible to find differing levels of sentiment at different times? For different hosts? Programs?
+    - Do differing levels of sentiment relate to real-world news happenings? e.g. 9/11; Iraq/Afghanistan wars; presidential campaigns (with an eye to 2016 in particular); 
+    - Can we identify a news category for given utterances? -> This applies particularly depending on the type of aggregation we are able to accomplish
+    - Are there words that are said more frequently by hosts? By time of day? By category?
+    - What host(s) say(s) the most words? 
+    - 

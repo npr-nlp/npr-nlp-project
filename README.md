@@ -1,40 +1,40 @@
 # REGRESSION
 
-## This file/repo contains information related to my Regression project, using thee Zillow dataset from the Codeup database.
+## This file/repo contains information on performing NLP analyses on NPR Interviews to find sentimentality.
 
 ## Project Description
 
-This Jupyter Notebook and presentation explore the Zillow dataset from the Codeup database. The data used relates to 2017 real estate transactions relating to single family homes in three California counties, and different aspects of the properties. An important aspect of the Zillow business model is to be able to publish accurate home values; I intend to build a machine learning model that makes predictions about the tax value of the homes in question.
+This Jupyter Notebook and presentation explore the NPR interview corpus. The data used relates to NPR radio interviews from 1999 to 2019. An important aspect of NPR as an independent media outlet is to effectively convey information to create a more informed public; I intend to build a machine learning model that interpets a corpus of interviews to predict public sentimentality.
 
-I will use Residual Mean Square Error as my metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from my best model, contrasted with the baseline RMSE.
+Residual Mean Square Error (RMSE) will be used as the primary metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from the best model, comparable with the baseline RMSE.
 
-Additionally, a Jupyter Notebook with my main findings and conclusions will be a key deliverable; many .py files will exist as a back-up to the main Notebook (think "under-the-hood" coding that will facilitate the presentation).
+Additionally, a Jupyter Notebook with our findings and conclusions will be a key deliverable; many .py files will exist as support for the main Notebook (think "under-the-hood" coding that will facilitate the presentation).
 
 
 ## The Plan
 
-The intention of this project is to follow the data science pipeline by acquiring and wrangling the relevant information from the Codeup database using a MySQL query; manipulating the data to a form suitable to the exploration of variables and machine learning models to be applied; and to graphically present the most outstanding findings, including actionable conclusions, along the way.
+The intention of this project is to follow the data science pipeline by acquiring and wrangling the relevant information from the NPR Media Dialog Transcripts dataset, located at: https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts. Manipulating the data to a form suitable to the exploration of variables and machine learning models to be applied, and to graphically present the most outstanding findings, including actionable conclusions, along the way.
 
 ## Project Goals
 
-The ultimate goal of this project is to build a model that predicts the tax value of the homes in question with a higher accuracy than the baseline I have chosen--the purpose being to be able to produce better, more accurate home price predictions than Zillow's competitors. 
+The ultimate goal of this project is to build a model that predicts the topic of discussion in NPR interviews with a lower error than the baseline I have chosen--the purpose being to be able to produce a model applying topics to the interviews. 
 
 ## Initial Questions
 
-- Are larger homes valued higher?  
+- 
 
-- What other aspects can be identified about higher-value homes?
+- 
 
-- Do more bathrooms relate to higher tax value? What about square feet per bathroom--is there a sweet spot?
+- 
 
-- Newer homes are larger; they are also valued more highly. Is there an exception to the rule?
+- 
 
 
 ##  Steps to Reproduce
 
 In  the case of this project, there are several python files that can be used to acquire, clean, prepare and otherwise manipulate the data in advance of exploration, feature selection, and modeling (listed below).
 
-I split the data into X_train and y_train data sets for much of the exploration and modelling, and was careful that no features were directly dependent on the target variable (tax_value).  I created a couple of features of my own, which produced some useful insights, and dropped rows with null values (my final dataset was 44,864 rows long, from 52,442 that were downloaded using SQL)
+I split the data into X_train and y_train data sets for much of the exploration and modeling, and was careful that no features were directly dependent on the target variable. I created a couple of features of my own, which produced some useful insights, and dropped rows with null values (my final dataset was 44,864 rows long, from 52,442 that were downloaded using SQL)
 
 Once the data is correctly prepared, it can be run through the sklearn preprocessing feature for polynomial regressiong and fit on the scaled X_train dataset, using only those features indicated from the recursive polynomial engineering feature selector (also an sklearn function).  This provided me with the best results for the purposes of my project.
 

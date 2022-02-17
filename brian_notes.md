@@ -23,14 +23,20 @@
         - missing data?
         - tokenize, stem, lemmatized 
         - stopwords
+        - bigrams
     - Explore
-        - Wordclouds
+        - Wordclouds-> break down by year? or for the time periods around big events?
         - Clustering? Is there any cluster that makes intuitive sense?
+        - Anomalies? Unexpected sentiment analysis results? 
+        - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc
     - Model
         - model sentiment analysis over time
         - Model speaker prediction
         - Iterate models with varying hyperparameters
     - Deliver
+        - Definitely some nerdy audio to open things up with.
+        - Polished notebook and helper files
+        - A little organization in the final repo--at a minimum, all files that aren't the final notebook and helper files could be stashed in a separate folder
 
 
 What does your MVP look like? What are your team's need to haves vs nice to haves?
@@ -45,4 +51,4 @@ Put answers to these questions in your standup doc (link in Google Classroom)
     - Can we identify a news category for given utterances? -> This applies particularly depending on the type of aggregation we are able to accomplish
     - Are there words that are said more frequently by hosts? By time of day? By category?
     - What host(s) say(s) the most words? 
-    - 
+    - Is there a difference in the mean sentiment by speaker? Program? etc

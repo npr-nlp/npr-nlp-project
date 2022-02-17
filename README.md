@@ -1,25 +1,34 @@
-# REGRESSION
+# NPR Sentiment Analysis
 
 ## This file/repo contains information on performing NLP analyses on NPR Interviews to find sentimentality.
 
 ## Project Description
 
-This Jupyter Notebook and presentation explore the NPR interview corpus. The data used relates to NPR radio interviews from 1999 to 2019. An important aspect of NPR as an independent media outlet is to effectively convey information to create a more informed public; I intend to build a machine learning model that interpets a corpus of interviews to predict public sentimentality.
+This Jupyter Notebook and presentation explore the NPR interview corpus. The data used relates to NPR radio interviews from 1999 to 2019. An important aspect of NPR as an independent media outlet is to effectively convey information to create a more informed public; we intend to build a machine learning model that interpets a corpus of interviews to predict sentiment scores.
 
-Residual Mean Square Error (RMSE) will be used as the primary metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from the best model, comparable with the baseline RMSE.
+Residual Mean Square Error (RMSE) (Or Accuracy for classification) will be used as the primary metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from the best model, comparable with the baseline RMSE.
 
 Additionally, a Jupyter Notebook with our findings and conclusions will be a key deliverable; many .py files will exist as support for the main Notebook (think "under-the-hood" coding that will facilitate the presentation).
 
 
 ## The Plan
 
-The intention of this project is to follow the data science pipeline by acquiring and wrangling the relevant information from the NPR Media Dialog Transcripts dataset, located at: https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts. Manipulating the data to a form suitable to the exploration of variables and machine learning models to be applied, and to graphically present the most outstanding findings, including actionable conclusions, along the way.
+The intention of this project is to follow the data science pipeline by acquiring and wrangling the relevant information from the NPR Media Dialog Transcripts dataset, located at: https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts. Manipulation of the data to a form suitable to the exploration of variables, application in machine learning, and to graphically present the most outstanding findings, including actionable conclusions, along the way.
 
 ## Project Goals
 
-The ultimate goal of this project is to build a model that predicts the topic of discussion in NPR interviews with a lower error than the baseline I have chosen--the purpose being to be able to produce a model applying topics to the interviews. 
+The ultimate goal of this project is to build a model that predicts the sentimentality of discussion in NPR interviews with a lower error than the baseline we have chosen--the purpose being to be able to produce a model applying sentiment to the interview, for insight in how the public my perceive the interview.
 
-## Initial Questions
+## Data Dictionary
+
+| variable      | meaning       |
+| ------------- |:-------------:|
+| sentiment | our target variable, created by sentiment analysis of NPR interviews |
+| episodes | each observation in our data is representative of each interview |
+| | |
+| | |
+
+<!-- ## Initial Questions
 
 - 
 
@@ -32,7 +41,7 @@ The ultimate goal of this project is to build a model that predicts the topic of
 
 ##  Steps to Reproduce
 
-In  the case of this project, there are several python files that can be used to acquire, clean, prepare and otherwise manipulate the data in advance of exploration, feature selection, and modeling (listed below).
+There are several python files that can be used to acquire, clean, prepare and otherwise manipulate the data in advance of exploration, feature selection, and modeling (listed below).
 
 I split the data into X_train and y_train data sets for much of the exploration and modeling, and was careful that no features were directly dependent on the target variable. I created a couple of features of my own, which produced some useful insights, and dropped rows with null values (my final dataset was 44,864 rows long, from 52,442 that were downloaded using SQL)
 
@@ -44,51 +53,7 @@ LIST OF MODULES USED IN THE PROJECT, FOUND IN THE PROJECT DIRECTORY:
 -- model.py: many, many different versions of the data were used in different feature selection and modeling algorithms; this module is helpful for splitting them up neatly.
 -- feature_engineering.py: contains functions to help choose the 'best' features using certain sklearn functions 
 
-## Data Dictionary
-
-Variable	Meaning
-___________________
-- bedrooms:	The number of bedrooms
-- bathrooms:	The number of bathrooms
-- sq_ft:	How many square feet
-- tax_value:	The tax value of the home
-- county:	What county does it belong to
-- age:	How old is it?
-- sq_ft_per_bathroom:	How many square feet per bathroom?
-- LA:	Belongs to Los Angeles county
-- Orange:	Belongs to Orange county
-- Ventura:	Belings to Ventura county
-
-Variables created in the notebook (explanation where it helps for clarity):
-
-- zillow_sql_query (The original query that is copied to 'zillow' DataFrame for manipulation and analysis)
-- zillow (A copy of the above DataFrame for use in the notebook)
-- train
-- validate
-- test
-- X_train
-- y_train
-- X_validate
-- y_validate
-- X_test
-- y_test
-- train_scaled
-- X_train_scaled
-- y_train_scaled
-- validate_scaled
-- X_validate_scaled
-- y_validate_scaled
-- test_scaled
-- X_test_scaled
-- y_test_scaled
-- X_train_kbest (scaled dataframe with only KBest features)
-- X_validate_kbest (scaled dataframe with only KBest features)
-- X_test_kbest (scaled dataframe with only KBest features)
-- X_train_rfe (scaled dataframe with only RFE features)
-- X_validate_rfe (scaled dataframe with only RFE features)
-- X_test_rfe (scaled dataframe with only RFE features)
-
-Missing values: there were only something around 200 missing values in the data; thus, I have dropped them in the wrangle.py file due to their relative scarcity.  By removing outliers, several thousand rows were dropped.
+Missing values: 
 
 ## Key findings, recommendations and takeaways
     
@@ -110,7 +75,7 @@ The following is a brief list of items that I'd like to add to the model:
 - Run models on other features, including the half-bath and sfpb
 - Run models on LA versus other counties
 - Pull in other features from SQL
-- Ordinal encode the bathrooms and bedrooms
+- Ordinal encode the bathrooms and bedrooms -->
 
 
 

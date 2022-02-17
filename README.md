@@ -27,23 +27,29 @@ The ultimate goal of this project is to build a model that predicts the sentimen
 | episode | each observation in our data is representative of each interview |
 | episode_id | identification number for each episode |
 | episode_date | date the episode was uploaded |
+| episode_order | order the interview occurred |
 | program | name of NPR program |
 | headline | article's headline |
 | is_host | whether the speaker is speaking as a host |
 | utterance | utterance text |
-
-<!-- ## Initial Questions
-
-- 
-
-- 
-
-- 
-
-- 
+| speaker | individual that is speaking during the utterance | 
+| title | name of the interview/article | 
 
 
-##  Steps to Reproduce
+## Initial Questions?
+### to MVP
+    - Is it possible to find differing levels of sentiment at different times? For different hosts? Programs?
+    - Are there words that are said more frequently by hosts? By time of day? By category?
+    - What host(s) say(s) the most words?
+    - Is there a difference in the mean sentiment by speaker? Program? etc
+    - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc 
+    - Are there stopwords, outside of the standard, that could be removed to help identify the speaker?
+    
+### and Beyond!
+    - Do differing levels of sentiment relate to real-world news happenings? e.g. 9/11; Iraq/Afghanistan wars; presidential campaigns (with an eye to 2016 in particular)
+    - Can we identify a news category for given utterances? -> This applies particularly depending on the type of aggregation we are able to accomplish
+
+<!-- ##  Steps to Reproduce
 
 There are several python files that can be used to acquire, clean, prepare and otherwise manipulate the data in advance of exploration, feature selection, and modeling (listed below).
 

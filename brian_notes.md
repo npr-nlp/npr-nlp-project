@@ -36,7 +36,7 @@
         - model sentiment analysis over time
         - Model speaker prediction
         - Iterate models with varying hyperparameters
-        - Explore the possibility of applying topic modeling--this would necessarily be unsupervised machine learning, and may be outside the scope of our project
+        - Explore the possibility of applying topic modeling--this would necessarily be unsupervised machine learning, and may be outside the scope of our project (UNLESS...we find a labeled data set we could run against the model for validation and testing...again, way past mvp for this step)
     - Deliver
         - Definitely some nerdy audio to open things up with.
         - Executive summary; all the headings in the Readme (be clear what is meant by 'recommendations' versus 'next steps')

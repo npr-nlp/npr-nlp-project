@@ -1,4 +1,4 @@
-## Elevator Pitch: we aim to do a study 20 years of NPR news transcripts to get an idea of the overall sentiment of NPR news over the years.  Along the way, we intend to pair major news events to the sentiment of news stories, and do a "sentiment forecast" model for unseen Data.  
+## Elevator Pitch: we aim to do a study 20 years of NPR news transcripts to get an idea of the overall sentiment of NPR news over the years.  Along the way, we intend to pair major news events to the sentiment of news stories, and do a "sentiment forecast" model for unseen Data; we also expect some other interesting exploration, including predictions on whether the speaker is an interviewer or interviewee, and potentially, what news category a story belongs to.  Future iterations may include other exploration and modeling, including adding outside news sources and predicting fake vs. legitimate news.
 
 
 

@@ -1,10 +1,6 @@
 ## Elevator Pitch: we aim to do a study 20 years of NPR news transcripts to get an idea of the overall sentiment of NPR news over the years.  Along the way, we intend to pair major news events to the sentiment of news stories, and do a "sentiment forecast" model for unseen Data; we also expect some other interesting exploration, including predictions on whether the speaker is an interviewer or interviewee, and potentially, what news category a story belongs to.  Future iterations may include other exploration and modeling, including adding outside news sources and predicting fake vs. legitimate news.
 
 
-
-
-
-
 ## What is your goal?: Find out how the mood of the nation has evolved over twenty years based on public radio news broadcasts. Build a predictive model for mood at a given point in time; also predict who the speaker is; what program it belongs to; and possibly what news category.
 
 ## What is your target? 
@@ -34,6 +30,7 @@
         - Anomalies? Unexpected sentiment analysis results? 
         - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc
         - Are there stopwords, outside of the standard, that could be removed to help identify the speaker?
+        - Possibility of leaving the "laughtrack" observations in and identifying those utterances that are followed by a laughtrack->from here, model to discover what is meant to be a joke
     - Model
         - model sentiment analysis over time
         - Model speaker prediction

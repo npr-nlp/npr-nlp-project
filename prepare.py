@@ -6,8 +6,6 @@ from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-
-
 def basic_clean(s):
     '''
     Takes a string and returns a normalized lowercase string 
@@ -19,8 +17,10 @@ def basic_clean(s):
     s = unicodedata.normalize('NFKD', s)\
     .encode('ascii', 'ignore')\
     .decode('utf-8', 'ignore')
-    # remove special characters and lowercase
-    s = re.sub(r"[^a-z0-9'\s]", '', s)
+    # remove special characters
+    s = re.sub(r"[-']", ' ', s)
+    s = re.sub(r"[^a-z0-9'\s\?\.\!]", '', s)
+
     return s
 
 def tokenize(s):
@@ -102,6 +102,15 @@ def prep_string_data(df, column, extra_words=[], exclude_words=[]):
 
     
     return df[['title', column,'clean', 'stemmed', 'lemmatized']]
+
+
+def prep_npr_data(df):
+    '''
+    The ultimate dishwasher for the NPR corpus.
+    '''
+    df['clean'] = [tokenize(basic_clean(u)) for u in df.utterance]
+
+
 
 def split_data(df):
     '''

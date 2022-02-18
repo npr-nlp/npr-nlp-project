@@ -26,6 +26,8 @@
         - stopwords
         - bigrams
         - include a MD file explaining clean/prep? 
+        - do we need to do more prep to clearly label hosts vs. non-hosts?
+        - POS (parts of speech analysis)? This is going to be unrealistic to have time for
     - Explore
         - Wordclouds-> break down by year? or for the time periods around big events?
         - Clustering? Is there any cluster that makes intuitive sense?  Number of speakers in a given article, for instance?

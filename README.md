@@ -87,7 +87,8 @@ The following is a brief list of items that I'd like to add to the model:
 - Pull in other features from SQL
 - Ordinal encode the bathrooms and bedrooms -->
 
+## A Note on the Source Data
 
-
+- The dataset used in this project is available at https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts?select=headlines.csv, and was compiled by Bodhisattwa Prasad Majumder*, Shuyang Li*, Jianmo Ni, Julian McAuley. A detailed description of its background and collection can be read at https://arxiv.org/pdf/2004.03090.pdf.
 
 

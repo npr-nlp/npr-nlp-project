@@ -15,10 +15,18 @@ def get_df():
 
     # joining utterances df ('df') and episodes on 'id'
     joined_df = pd.merge(df, ep_df, left_on = 'episode', right_on='id', how = 'inner')
+    # drop extra columns
     joined_df.drop(columns = ['id'], inplace=True)
+    # rename columns
     joined_df.rename(columns={'episode':'episode_id'}, inplace = True)
+    # lowercase str columns
+    joined_df['speaker'] = joined_df.speaker.str.lower()
+    joined_df['program'] = joined_df.program.str.lower()
+    joined_df['title'] = joined_df.title.str.lower()
+
+    # create column identifying hosts
     joined_df['is_host'] = joined_df.speaker.str.contains(r'\W*(host)\W*')
-    
+
     # return joined dataframe with all info
     return joined_df
 

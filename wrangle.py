@@ -1,5 +1,4 @@
 import os
-import json
 import numpy as np
 import pandas as pd
 import acquire
@@ -33,19 +32,14 @@ def get_npr_data():
         df = acquire.get_df()
 
         # prepare data
-        prepare.prep_npr_data(df)
+        df = prepare.prep_npr_data(df)
 
         # Cache data
         df.to_csv('npr_corpus.csv')
 
         # print statements for size of each df
         print(f'The df has {df.shape[0]} rows and {df.shape[1]} columns.')
-    
-    # fix is_host column
-    df['speaker'] = df.speaker.str.lower()
-    df['is_host'] = df.speaker.str.contains(r'\W*(host)\W*')
-    df = df[df.date > '2005']
-    df.dropna(inplace=True)
+    df.drop(columns='episode_date', inplace = True)
     return df
 
 def split_data(df):

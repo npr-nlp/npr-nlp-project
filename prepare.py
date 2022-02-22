@@ -1,6 +1,9 @@
 import unicodedata
 import re
-import nltk
+import datetime
+import pandas as pd
+import numpy as np
+import nltk.sentiment
 from nltk.tokenize.toktok import ToktokTokenizer
 from nltk.corpus import stopwords
 
@@ -18,7 +21,7 @@ def basic_clean(s):
     .decode('utf-8', 'ignore')
     # remove special characters
     s = re.sub(r"[-']", ' ', s)
-    s = re.sub(r"[^a-z0-9'\s\?\.\!]", '', s)
+    s = re.sub(r"[^a-z0-9'\s\?\.\!\,]", '', s)
 
     return s
 
@@ -107,4 +110,45 @@ def prep_npr_data(df):
     '''
     The ultimate dishwasher for the NPR corpus.
     '''
+    # obtain top 10 hosts
+    print('Getting top hosts...')
+    hosts_to_keep = df[df.is_host == True].speaker.value_counts().head(10).index.to_list()
+    # create host df
+    hosts_df = df[df.speaker.isin(hosts_to_keep)]
+    # get episode_id of top 10 hosts
+    top_host_episodes = hosts_df.episode_id.value_counts().index.to_list()
+    print('Getting Episode ID\'s for the hosts...')
+    # create dataframe with mask of episodes with top hosts
+    df = df[df.episode_id.isin(top_host_episodes)]
+    # remove rows with foreign languages spoken
+    df = df[df.utterance!='(foreign language spoken)']
+    print('Double checking speaker variables...')
+    # remove rows without speaker (sound effects)
+    df = df[df.speaker!='_no_speaker']
+    # drop duplicates
+    df.drop_duplicates(inplace = True)
+    print('Dropping duplicates...')
+    # drop nulls
+    df.dropna(inplace=True)
+    print('Dropping null values...')
+    # create clean column
+    print('Cleaning corpus...')
     df['clean'] = [tokenize(basic_clean(u)) for u in df.utterance]
+    # create lemmatized column
+    print('Lemmatizing corpus...')
+    df['lemmatized'] = df['clean'].apply(tokenize).apply(lemmatize)
+    # vader sentiment analysis
+    print('Analyzing sentiment with VADER...')
+    sia = nltk.sentiment.SentimentIntensityAnalyzer()
+    df['vader'] = df.lemmatized.apply(lambda doc: sia.polarity_scores(doc)['compound'])
+    # date column to datetime
+    print('Converting to datetime...')
+    df['date'] = pd.to_datetime(df.episode_date)
+    # cutoff dates prior to 2005 due to low observation count
+    print('Trimming timeline...')
+    df = df[df.date > '2005']
+    # double check drop nulls
+    df.dropna(inplace = True)
+    # return prepared df
+    return df
+

@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 import acquire
 import prepare
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 
 '''
 This module uses the acquire and prepare modules to create a usable NPR corpus.
@@ -38,4 +41,19 @@ def get_npr_data():
         # print statements for size of each df
         print(f'The df has {df.shape[0]} rows and {df.shape[1]} columns.')
     
+    # fix is_host column
+    df['speaker'] = df.speaker.str.lower()
+    df['is_host'] = df.speaker.str.contains(r'\W*(host)\W*')
+
     return df
+
+def split_data(df):
+    '''
+    Takes in a dataframe and returns train, validate, test subset dataframes. 
+    '''
+    # tfidf = TfidfVectorizer()
+    # X = tfidf.fit_transform(df.lemmatized)
+    # y = df.language
+    train, test = train_test_split(df, test_size = .2, stratify = df.language, random_state = 222)
+    train, validate = train_test_split(train, test_size = .3, stratify = train.language, random_state = 222)
+    return train, validate, test

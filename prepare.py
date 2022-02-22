@@ -3,8 +3,7 @@ import re
 import nltk
 from nltk.tokenize.toktok import ToktokTokenizer
 from nltk.corpus import stopwords
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
+
 
 def basic_clean(s):
     '''
@@ -109,16 +108,3 @@ def prep_npr_data(df):
     The ultimate dishwasher for the NPR corpus.
     '''
     df['clean'] = [tokenize(basic_clean(u)) for u in df.utterance]
-
-
-
-def split_data(df):
-    '''
-    Takes in a dataframe and returns train, validate, test subset dataframes. 
-    '''
-    # tfidf = TfidfVectorizer()
-    # X = tfidf.fit_transform(df.lemmatized)
-    # y = df.language
-    train, test = train_test_split(df, test_size = .2, stratify = df.language, random_state = 222)
-    train, validate = train_test_split(train, test_size = .3, stratify = train.language, random_state = 222)
-    return train, validate, test

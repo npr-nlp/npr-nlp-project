@@ -45,6 +45,7 @@ def get_npr_data():
     df['speaker'] = df.speaker.str.lower()
     df['is_host'] = df.speaker.str.contains(r'\W*(host)\W*')
     df = df[df.date > '2005']
+    df.dropna(inplace=True)
     return df
 
 def split_data(df):

@@ -5,3 +5,4 @@ __pycache__
 __pycache__/
 *.json
 *.csv
+prophet_modeling.ipynb

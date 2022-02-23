@@ -31,6 +31,9 @@
         - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc
         - Are there stopwords, outside of the standard, that could be removed to help identify the speaker?
         - Possibility of leaving the "laughtrack" observations in and identifying those utterances that are followed by a laughtrack->from here, model to discover what is meant to be a joke
+        - vader on different corpi (lemmatized, stemmed, stopped, etc.)
+        - What was the most negative newstory in the bunch?  The most positive? This will make for great explo and is easy to get to: aggregate on 'episode_id' (which is the 'article')
+        - The most negative and positive individual program? Aggregating on program and date (and individual program is a progran name on a given date)
     - Model
         - model sentiment analysis over time
         - Model speaker prediction

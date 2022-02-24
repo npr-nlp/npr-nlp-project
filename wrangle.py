@@ -42,6 +42,20 @@ def get_npr_data():
     df.drop(columns='episode_date', inplace = True)
     #change name of a couple columns:
     df = df.rename(columns={'episode_id':"story_id_num", 'episode_order':'utterance_order'})
+    
+    # regex to adjust speaker names
+    df['speaker'] = df.speaker.str.replace(r'\([^)]*\)','', regex=True)
+    df['speaker'] = df.speaker.str.replace(r'host','', regex=True)
+    df['speaker'] = df.speaker.str.replace(r'[^a-z0-9\s\.]','', regex=True).str.strip()
+    df['speaker'] = df.speaker.str.replace('lourdes','lulu')
+
+    ## redo is_host
+    # create host_map and list of hosts
+    host_map = pd.read_json('host-map.json')
+    host_map = host_map.T
+    hosts = host_map.name.to_list()
+    hosts.append('neal conan')
+    df['is_host'] = df.speaker.isin(hosts)
     return df
 
 def split_data(df):

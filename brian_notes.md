@@ -31,11 +31,16 @@
         - Applied statistics-> i.e. stats testing. Is there a difference in the mean sentiment by speaker? Program? etc
         - Are there stopwords, outside of the standard, that could be removed to help identify the speaker?
         - Possibility of leaving the "laughtrack" observations in and identifying those utterances that are followed by a laughtrack->from here, model to discover what is meant to be a joke
+        - vader on different corpi (lemmatized, stemmed, stopped, etc.)
+        - What was the most negative newstory in the bunch?  The most positive? This will make for great explo and is easy to get to: aggregate on 'episode_id' (which is the 'article')
+        - The most negative and positive individual program? Aggregating on program and date (and individual program is a progran name on a given date)
     - Model
         - model sentiment analysis over time
         - Model speaker prediction
         - Iterate models with varying hyperparameters
         - Explore the possibility of applying topic modeling--this would necessarily be unsupervised machine learning, and may be outside the scope of our project (UNLESS...we find a labeled data set we could run against the model for validation and testing...again, way past mvp for this step)--> see NLP packages Gensim and spaCy
+        - Don't forget that the countvectorizer package has a function to pull bigrams!! (ngram_range = (x, y))
+
     - Deliver
         - Definitely some nerdy audio to open things up with.
         - Executive summary; all the headings in the Readme (be clear what is meant by 'recommendations' versus 'next steps')
@@ -56,3 +61,10 @@ Put answers to these questions in your standup doc (link in Google Classroom)
     - Are there words that are said more frequently by hosts? By time of day? By category?
     - What host(s) say(s) the most words? 
     - Is there a difference in the mean sentiment by speaker? Program? etc
+
+
+
+
+## Moving forward things:
+    - remove oddball speakers (where text has found its way into the speaker box)
+    

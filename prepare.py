@@ -149,6 +149,8 @@ def prep_npr_data(df):
     df = df[df.date > '2005']
     # double check drop nulls
     df.dropna(inplace = True)
+    #change name of a couple columns:
+    df = df.rename(columns={'episode_id':"story_id_num", 'episode_order':'utterance_order'})
     # return prepared df
     return df
 

@@ -40,6 +40,8 @@ def get_npr_data():
         # print statements for size of each df
         print(f'The df has {df.shape[0]} rows and {df.shape[1]} columns.')
     df.drop(columns='episode_date', inplace = True)
+    #change name of a couple columns:
+    df = df.rename(columns={'episode_id':"story_id_num", 'episode_order':'utterance_order'})
     return df
 
 def split_data(df):

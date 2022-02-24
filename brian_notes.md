@@ -24,6 +24,7 @@
         - include a MD file explaining clean/prep? 
         - do we need to do more prep to clearly label hosts vs. non-hosts?
         - POS (parts of speech analysis)? This is going to be unrealistic to have time for
+        - Is utterance a worthwhile feature? scale it
     - Explore
         - Wordclouds-> break down by year? or for the time periods around big events?
         - Clustering? Is there any cluster that makes intuitive sense?  Number of speakers in a given article, for instance?
@@ -67,4 +68,3 @@ Put answers to these questions in your standup doc (link in Google Classroom)
 
 ## Moving forward things:
     - remove oddball speakers (where text has found its way into the speaker box)
-    

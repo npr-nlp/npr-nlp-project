@@ -39,6 +39,8 @@
         - Model speaker prediction
         - Iterate models with varying hyperparameters
         - Explore the possibility of applying topic modeling--this would necessarily be unsupervised machine learning, and may be outside the scope of our project (UNLESS...we find a labeled data set we could run against the model for validation and testing...again, way past mvp for this step)--> see NLP packages Gensim and spaCy
+        - Don't forget that the countvectorizer package has a function to pull bigrams!! (ngram_range = (x, y))
+
     - Deliver
         - Definitely some nerdy audio to open things up with.
         - Executive summary; all the headings in the Readme (be clear what is meant by 'recommendations' versus 'next steps')
@@ -59,3 +61,10 @@ Put answers to these questions in your standup doc (link in Google Classroom)
     - Are there words that are said more frequently by hosts? By time of day? By category?
     - What host(s) say(s) the most words? 
     - Is there a difference in the mean sentiment by speaker? Program? etc
+
+
+
+
+## Moving forward things:
+    - remove oddball speakers (where text has found its way into the speaker box)
+    

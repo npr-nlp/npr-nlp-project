@@ -65,6 +65,6 @@ def split_data(df):
     # tfidf = TfidfVectorizer()
     # X = tfidf.fit_transform(df.lemmatized)
     # y = df.language
-    train, test = train_test_split(df, test_size = .2, random_state = 222)
-    train, validate = train_test_split(train, test_size = .3, random_state = 222)
+    train, test = train_test_split(df, test_size = .2, stratify = df.is_host, random_state = 222)
+    train, validate = train_test_split(train, test_size = .3, stratify = train.is_host,random_state = 222)
     return train, validate, test

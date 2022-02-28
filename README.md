@@ -87,7 +87,7 @@ This datset provides ample opportunities for exploration, and any number could b
 - Evaluating our Prophet model for the time series analysis (maybe we have a prediction of future sentiment after all?)
 - Small issues that occured when lemmatizing
 - Continued trimming by adding stopwords
-- Expore the effect of the question mark count--is this target leakage?
+- Expore the effect of the question mark count--is this an example of target leakage?  Or just low-hanging fruit?
 
 ## A Note on the Source Data
 

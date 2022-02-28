@@ -6,7 +6,7 @@
 
 This Jupyter Notebook and presentation explore the NPR interview corpus. The data used relates to NPR radio interviews from 1999 to 2019. An important aspect of NPR as an independent media outlet is to effectively convey information to create a more informed public; we intend to build a machine learning model that interpets a corpus of interviews to predict sentiment scores.
 
-Residual Mean Square Error (RMSE) (Or Accuracy for classification) will be used as the primary metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from the best model, comparable with the baseline RMSE.
+Accuracy (for classification) will be used as the primary metric for evaluation; many models will be built using different features and hyperparameters to find the model of best fit.  One of the final deliverables will be the RMSE value resulting from the best model, comparable with the baseline accuracy.
 
 Additionally, a Jupyter Notebook with our findings and conclusions will be a key deliverable; many .py files will exist as support for the main Notebook (think "under-the-hood" coding that will facilitate the presentation).
 
@@ -17,7 +17,7 @@ The intention of this project is to follow the data science pipeline by acquirin
 
 ## Project Goals
 
-The ultimate goal of this project is to build a model that predicts the sentimentality of discussion in NPR interviews with a lower error than the baseline we have chosen--the purpose being to be able to produce a model applying sentiment to the interview, for insight in how the public my perceive the interview.
+The ultimate goal of this project is to build a model that predicts whether an utterance was said by a host or by a guest.  Additional goals include studying sentiment over time (including attempting to predict sentiment) and an exploration of the utterances, hosts and stories that were broadcast on NPR over the years in question.
 
 ## Data Dictionary
 
@@ -49,21 +49,24 @@ The ultimate goal of this project is to build a model that predicts the sentimen
     - Do differing levels of sentiment relate to real-world news happenings? e.g. 9/11; Iraq/Afghanistan wars; presidential campaigns (with an eye to 2016 in particular)
     - Can we identify a news category for given utterances? -> This applies particularly depending on the type of aggregation we are able to accomplish
 
-<!-- ##  Steps to Reproduce
+##  Steps to Reproduce
 
-There are several python files that can be used to acquire, clean, prepare and otherwise manipulate the data in advance of exploration, feature selection, and modeling (listed below).
+The files required to reproduce are availabe at:
+https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts
+The only files used in this study were "utterrances.csv", and "episodes.csv".
 
-I split the data into X_train and y_train data sets for much of the exploration and modeling, and was careful that no features were directly dependent on the target variable. I created a couple of features of my own, which produced some useful insights, and dropped rows with null values (my final dataset was 44,864 rows long, from 52,442 that were downloaded using SQL)
+As an alternative, considering the huge size of the files involved, a copy of the final .csv resulting from all wrangling can be downloaded at https://drive.google.com/file/d/1RANtH1IS5iDmlUOigKMMG8EQOgh6dkNp/view?usp=sharing.
 
-Once the data is correctly prepared, it can be run through the sklearn preprocessing feature for polynomial regressiong and fit on the scaled X_train dataset, using only those features indicated from the recursive polynomial engineering feature selector (also an sklearn function).  This provided me with the best results for the purposes of my project.
+All other necessary files can be cloned along with the rest of the project at the project's github:
+https://github.com/npr-nlp/npr-nlp-project
 
-LIST OF MODULES USED IN THE PROJECT, FOUND IN THE PROJECT DIRECTORY:
+Once the repository is cloned and the final csv downloaded, the notebook should run with no issues.
+
+<!-- LIST OF MODULES USED IN THE PROJECT, FOUND IN THE PROJECT DIRECTORY:
 -- wrangle.py: for acquiring, cleaning, encoding, splitting and scaling the data.  
 -- viz.py: used for creating several graphics for my final presentation
 -- model.py: many, many different versions of the data were used in different feature selection and modeling algorithms; this module is helpful for splitting them up neatly.
--- feature_engineering.py: contains functions to help choose the 'best' features using certain sklearn functions 
-
-Missing values: 
+-- feature_engineering.py: contains functions to help choose the 'best' features using certain sklearn functions  -->
 
 ## Key findings, recommendations and takeaways
     

@@ -53,7 +53,7 @@ The ultimate goal of this project is to build a model that predicts whether an u
 
 The files required to reproduce are availabe at:
 https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts
-The only files used in this study were "utterrances.csv", and "episodes.csv".
+The only files used in this study were "utterrances.csv", and "episodes.csv", which we downloaded on 2/2/22.
 
 As an alternative, considering the huge size of the files involved, a copy of the final .csv resulting from all wrangling can be downloaded at https://drive.google.com/file/d/1RANtH1IS5iDmlUOigKMMG8EQOgh6dkNp/view?usp=sharing.
 
@@ -70,25 +70,24 @@ Once the repository is cloned and the final csv downloaded, the notebook should 
 
 ## Key findings, recommendations and takeaways
     
-Many of my initial questions had clear answers, but through statistical analysis I was able to make safe assumptions, which in turn led me down paths that I may have otherwise missed. More square feet, bedrooms and bathrooms all correlate to higher tax value; who would have thought that the relationship between these factors works differently depending on your county? 
+We were able to get great answers from the data in our exploration--demonstrating, for example, the keen adherence to neutrality shown by NPR hosts in their utterances. Other exploration did not evolve into clear takeaways, except to say it was not predictive. This is in reference to the analysis of sentiment over time, which, although some anecdotal trends seem to exist, on the whole is generally very full of noise and difficult to draw conclusions from. 
 
-Even my model, which has room for improvement, was capable of predicting the tax value of homes--by over 10 percent on the test data, and with similar margins for the train and validate data. I expect it to perform as well on unseen data as well--keeping certain parameters constant.
+The models we built were interesting and yielded worthwhile results--when predicting whether an utterance was said by a guest or host, our best model beat the baseline by over 23%. This seems a good start for, at a minimum, filtering out probable fake utterances.  
 
 ## Recommendations
 
-I recommend exploring the relationship between half bathrooms and tax value as an easy addition to the model that may bring some benefit.  Additionally, running the model on LA county as separate from Ventura and orange might see some benefit, seeing as there area some different ways that the features work on tax value there. Square feet per bathroom is an example here--it didn't make it into my model, but may have value for future models.  
+We recommend our model be used as an analytical tool of news articles. NPR, for instance, may find this exploration useful for analytical reasons (do we need to address imbalances in tone between programs? hosts? over time?), but another stakeholer is the public writ large, which has an interest in understanding the content being broadcast by the largest not-for-profit news source on the radio waves.
 
 ## Next steps
 
-Continuing to select new features from the Codeup database stands to improve the model--assuming they don't present unforeseen problems such as numerous null values, etc.  Fireplaces and pools and certain feature engineering around those elements in particular could be interesting (is it detrimental to have too many? for example). Even from my most preliminary analysis, it seemed that half baths were beneficial, and it would be interesting to look at similar phenomena in those other featurs mentioned (and unmentioned).  I would also like to explore the method I've used to eliminate outliers, at least for some features--I'm worried that there might have been some useful info that was dropped with the outliers, especially one bedroom homes.
-
-The following is a brief list of items that I'd like to add to the model:
-
-- Incorporate a "has half bath" feature
-- Run models on other features, including the half-bath and sfpb
-- Run models on LA versus other counties
-- Pull in other features from SQL
-- Ordinal encode the bathrooms and bedrooms -->
+This datset provides ample opportunities for exploration, and any number could be suggested, such as:
+- Network diagrams for the relationship between hosts and programs
+- Radial tree for hosts and top words said
+- Topic modeling
+- Evaluating our Prophet model for the time series analysis (maybe we have a prediction of future sentiment after all?)
+- Small issues that occured when lemmatizing
+- Continued trimming by adding stopwords
+- Expore the effect of the question mark count--is this target leakage?
 
 ## A Note on the Source Data
 

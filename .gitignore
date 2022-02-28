@@ -7,3 +7,4 @@ __pycache__/
 *.csv
 prophet_modeling.ipynb
 *.png
+brian_notes.md

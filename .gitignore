@@ -6,3 +6,5 @@ __pycache__/
 *.json
 *.csv
 prophet_modeling.ipynb
+*.png
+brian_notes.md

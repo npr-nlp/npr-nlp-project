@@ -142,7 +142,46 @@ def episode_sentiment_weekday():
 
     viz_df.reset_index(inplace = True);
     
-    
+def program_sentiment():
+    """
+    This function changes the date to a datetime object, sets it as the index and 
+    produces a visualization of the resampled average sentiment by program.
+    """
+    viz_df = df.copy()
+
+    viz_df['date'] = pd.to_datetime(viz_df.date)
+
+    # set date to index
+    viz_df = viz_df.set_index('date').sort_index()
+
+    #  making df for each program
+    talk_of_the_nation_df = viz_df[viz_df.program == 'talk of the nation']
+    morning_edition_df = viz_df[viz_df.program == 'morning edition']
+    all_things_considered_df = viz_df[viz_df.program == 'all things considered']
+    news_and_notes_df = viz_df[viz_df.program == 'news & notes']
+    weekend_edition_saturday_df = viz_df[viz_df.program == 'weekend edition saturday']
+    weekend_edition_sunday_df = viz_df[viz_df.program == 'weekend edition sunday']
+    day_to_day_df = viz_df[viz_df.program == 'day to day']
+
+    # plot the  sentimen over time of each program
+    plt.figure(figsize = (30,10))
+
+    talk_of_the_nation_df.resample("y").vader.mean().plot(alpha = .5)
+    all_things_considered_df.resample("y").vader.mean().plot(alpha = .5)
+    morning_edition_df.resample("y").vader.mean().plot(alpha = .5)
+    news_and_notes_df.resample("y").vader.mean().plot(alpha = .5)
+    day_to_day_df.resample("y").vader.mean().plot(alpha = .5)
+    weekend_edition_sunday_df.resample("y").vader.mean().plot(alpha = .5)
+    weekend_edition_saturday_df.resample("y").vader.mean().plot(alpha = .5)
+
+    plt.title("Average Sentiment Over Time, by Program")
+    plt.legend(['Talk of the Nation',
+     'All Things Considered',
+     'Morning Edition',
+     'News & Notes',
+     'Day to Day',
+     'Weekend Edition Sunday',
+     'Weekend Edition Saturday'], prop = {'size': 20});    
     
     
     

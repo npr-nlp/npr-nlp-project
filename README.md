@@ -36,6 +36,11 @@ The ultimate goal of this project is to build a model that predicts whether an u
 | title | name of the interview/article | 
 
 
+## Missing values:
+    - Dropped observations before 2005 due to large amounts of missing data
+    - A very small number (less than 10) missing values after that were dropped
+    - For modeling, speakers with two or less utterances were dropped to avoid issues splitting
+
 ## Initial Questions?
 ### to MVP
     - Is it possible to find differing levels of sentiment at different times? For different hosts? Programs?
@@ -60,7 +65,9 @@ As an alternative, considering the huge size of the files involved, a copy of th
 All other necessary files can be cloned along with the rest of the project at the project's github:
 https://github.com/npr-nlp/npr-nlp-project
 
-Once the repository is cloned and the final csv downloaded, the notebook should run with no issues.
+Installations required: NTLK; Gensim; spaCy; the standard Pandas libraries.
+
+With these installations complete, and once the repository is cloned and the final csv downloaded, the notebook should run with no issues.
 
 <!-- LIST OF MODULES USED IN THE PROJECT, FOUND IN THE PROJECT DIRECTORY:
 -- wrangle.py: for acquiring, cleaning, encoding, splitting and scaling the data.  
@@ -76,7 +83,7 @@ The models we built were interesting and yielded worthwhile results--when predic
 
 ## Recommendations
 
-We recommend our model be used as an analytical tool of news articles. NPR, for instance, may find this exploration useful for analytical reasons (do we need to address imbalances in tone between programs? hosts? over time?), but another stakeholer is the public writ large, which has an interest in understanding the content being broadcast by the largest not-for-profit news source on the radio waves.
+We recommend our model be used as an analytical tool of news articles. NPR, for instance, may find this exploration useful for analytical reasons (do we need to address imbalances in tone between programs? hosts? over time?), but another stakeholder is the public writ large, which has an interest in understanding the content being broadcast by the largest not-for-profit news source on the radio waves. The classification power of our final model is also a quote actually belonds to an NPR correspondent.
 
 ## Next steps
 
@@ -87,7 +94,9 @@ This datset provides ample opportunities for exploration, and any number could b
 - Evaluating our Prophet model for the time series analysis (maybe we have a prediction of future sentiment after all?)
 - Small issues that occured when lemmatizing
 - Continued trimming by adding stopwords
-- Expore the effect of the question mark count--is this target leakage?
+- Expore the effect of the question mark count--is this an example of target leakage? Or just low-hanging fruit?
+- Coninuing exploration of the corpuses such as Part of Speech analysis
+- Etc.
 
 ## A Note on the Source Data
 

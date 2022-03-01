@@ -36,6 +36,11 @@ The ultimate goal of this project is to build a model that predicts whether an u
 | title | name of the interview/article | 
 
 
+## Missing values:
+    - Dropped observations before 2005 due to large amounts of missing data
+    - A very small number (less than 10) missing values after that were dropped
+    - For modeling, speakers with two or less utterances were dropped to avoid issues splitting
+
 ## Initial Questions?
 ### to MVP
     - Is it possible to find differing levels of sentiment at different times? For different hosts? Programs?

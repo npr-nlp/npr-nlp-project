@@ -16,19 +16,6 @@ import wrangle
 import acquire
 from prepare import basic_clean, tokenize, lemmatize, stem, remove_stopwords, prep_string_data
 
-# prepare dataset from script functions
-df = wrangle.get_npr_data()
-
-# create a question mark count column
-df['question_mark_count'] = df.utterance.str.count(r"[\?]")
-
-# extract the total number of question marks for every given speaker, display top ten
-df[['speaker','question_mark_count']].groupby(['speaker'])['question_mark_count'] \
-                             .count() \
-                             .reset_index(name='count') \
-                             .sort_values(['count'], ascending=False) \
-                             .head(10).T
-
 def npr_host_vs_guest():
     """
     This function produces a visualization comparing the question count of hosts vs guests.

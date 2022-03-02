@@ -310,4 +310,4 @@ def run_modeling():
     ######################################
     eval_df = eval_df.append(ev1).append(ev2).append(ev3).append(ev4).append(ev5).append(ev6).append(ev7)\
     .append(ev8).append(ev9).append(ev10).append(ev11).append(ev12).append(ev13).append(ev14).append(ev15).append(ev16)
-    return eval_df
+    return eval_df, train, validate, test

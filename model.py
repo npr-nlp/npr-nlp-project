@@ -48,13 +48,16 @@ def run_modeling():
 
     # sample down due to size issuees
     small_df = df.sample(100_000, random_state=222)
+    
+    ############################# THIS BIT TURNED OUT NOT TO BE REQUIRED #########################
     # counts of observations per speaker
     counts = small_df['speaker'].value_counts()
     # limiting our df to only speakers with 3 or more utterances. This helped wheen stratifying the splits
     rest = small_df[~small_df['speaker'].isin(counts[counts < 3].index)]
-
+    ############################# BUT IT'S GOOD CODE FOR REFERENCE ###############################
+    
     # get initial splits based no "rest", which is a sampled-down df with speakers with 2 or less observations removed
-    train, validate, test = wrangle.split_data(rest)
+    train, validate, test = wrangle.split_data(small_df)
     print(f"train shape is {train.shape}")
     print(f"validate shape is {validate.shape}")
     print(f"test shape is {test.shape}")

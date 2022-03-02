@@ -118,7 +118,7 @@ def run_modeling():
     test['baseline_pred'] = True
 
     # append to eval df
-    eval_df = append_eval_df('baseline_pred', accuracy_score(train.is_host, train.baseline_pred),accuracy_score(validate.is_host, validate.baseline_pred))
+    ev1 = append_eval_df('baseline_pred', accuracy_score(train.is_host, train.baseline_pred),accuracy_score(validate.is_host, validate.baseline_pred))
 
     # for the modeling portion...we're gonna have to get all the lm variables togethere and disambiguate
 
@@ -135,7 +135,7 @@ def run_modeling():
     validate['predicted_X_just_features'] = lm.predict(X_validate)
     test['predicted_X_just_features'] = lm.predict(X_test)
     # append t oeval df
-    eval_df = append_eval_df('Log_Reg_Just_Features', accuracy_score(train.actual,train.predicted_X_just_features),\
+    ev2 = append_eval_df('Log_Reg_Just_Features', accuracy_score(train.actual,train.predicted_X_just_features),\
             accuracy_score(validate.actual,validate.predicted_X_just_features))
     # TF-IDF alone
     ##############
@@ -146,7 +146,7 @@ def run_modeling():
     validate['predicted_Xtfidf'] = lm_tfidf.predict(X_validate_tfidf)
     test['predicted_Xtfidf'] = lm_tfidf.predict(X_test_tfidf)
     # append to eval df
-    eval_df = append_eval_df('Log_Reg_Just_TFIDF', accuracy_score(train.actual, train.predicted_Xtfidf),\
+    ev3 = append_eval_df('Log_Reg_Just_TFIDF', accuracy_score(train.actual, train.predicted_Xtfidf),\
                             accuracy_score(validate.actual, validate.predicted_Xtfidf))
     #  TF-IDF Plus Features
     #######################
@@ -157,7 +157,7 @@ def run_modeling():
     validate['predicted_Xtfidf_plusfeatures'] = lm_tfidf_plusfeatures.predict(X_validate_tfidf_plusfeatures)
     test['predicted_Xtfidf_plusfeatures'] = lm_tfidf_plusfeatures.predict(X_test_tfidf_plusfeatures)
     # append to eval df
-    eval_df = append_eval_df('Log_Reg_TFIDF_Plus_Features', accuracy_score(train.actual, train.predicted_Xtfidf_plusfeatures),\
+    ev4 = append_eval_df('Log_Reg_TFIDF_Plus_Features', accuracy_score(train.actual, train.predicted_Xtfidf_plusfeatures),\
                             accuracy_score(validate.actual, validate.predicted_Xtfidf_plusfeatures))
     # Count Vectorizer Alone
     ################################
@@ -168,7 +168,7 @@ def run_modeling():
     validate['predicted_X_cv'] = lm_cv.predict(X_validate_cv)
     test['predicted_X_cv'] = lm_cv.predict(X_test_cv)
     # append eval df
-    eval_df = append_eval_df('Log_Reg_CV', accuracy_score(train.actual, train.predicted_X_cv),\
+    ev5 = append_eval_df('Log_Reg_CV', accuracy_score(train.actual, train.predicted_X_cv),\
                             accuracy_score(validate.actual, validate.predicted_X_cv))
     # Count Vectorizer Plus Features
     ################################
@@ -179,7 +179,7 @@ def run_modeling():
     validate['predicted_X_cv_plus_features'] = lm_cv_plusfeatures.predict(X_validate_cv_plusfeatures)
     test['predicted_X_cv_plus_features'] = lm_cv_plusfeatures.predict(X_test_cv_plusfeatures)
     # append eval df
-    eval_df = append_eval_df('Log_Reg_CV_Plus_Features', accuracy_score(train.actual, train.predicted_X_cv_plus_features),\
+    ev6 = append_eval_df('Log_Reg_CV_Plus_Features', accuracy_score(train.actual, train.predicted_X_cv_plus_features),\
                             accuracy_score(validate.actual, validate.predicted_X_cv_plus_features))
     print("LR done")
     #######################
@@ -195,7 +195,7 @@ def run_modeling():
     train['predicted_clf_just_features'] = clf.predict(X_train)
     validate['predicted_clf_just_features'] = clf.predict(X_validate)
     # append eval df
-    eval_df = append_eval_df('Decision_Tree_Just_Features', accuracy_score(train.actual, train.predicted_clf_just_features),\
+    ev7 = append_eval_df('Decision_Tree_Just_Features', accuracy_score(train.actual, train.predicted_clf_just_features),\
                             accuracy_score(validate.actual, validate.predicted_clf_just_features))
     # TF-IDF alone
     ##############
@@ -206,7 +206,7 @@ def run_modeling():
     validate['predicted_clf_tfidf'] = clf_tfidf.predict(X_validate_tfidf)
     test['predicted_clf_tfidf'] = clf_tfidf.predict(X_test_tfidf)
     # append eval df
-    eval_df = append_eval_df('DecisionTree_Just_TFIDF', accuracy_score(train.actual, train.predicted_clf_tfidf),\
+    ev8 = append_eval_df('DecisionTree_Just_TFIDF', accuracy_score(train.actual, train.predicted_clf_tfidf),\
                             accuracy_score(validate.actual, validate.predicted_clf_tfidf))
     #  TF-IDF Plus Features
     #######################
@@ -217,7 +217,7 @@ def run_modeling():
     validate['CLF_predicted_Xtfidf_plusfeatures'] = clf_tfidf_plus_features.predict(X_validate_tfidf_plusfeatures)
     test['CLF_predicted_Xtfidf_plusfeatures'] = clf_tfidf_plus_features.predict(X_test_tfidf_plusfeatures)
     #append eval df
-    eval_df = append_eval_df('Decision_Tree_TFIDF_PlusFeatures', accuracy_score(train.actual, train.CLF_predicted_Xtfidf_plusfeatures),\
+    ev9 = append_eval_df('Decision_Tree_TFIDF_PlusFeatures', accuracy_score(train.actual, train.CLF_predicted_Xtfidf_plusfeatures),\
                             accuracy_score(validate.actual, validate.CLF_predicted_Xtfidf_plusfeatures))
     # Count Vectorizer Alone
     ################################
@@ -228,7 +228,7 @@ def run_modeling():
     validate['predicted_Xcv'] = clf_countvectorizer.predict(X_validate_cv)
     test['predicted_Xcv'] = clf_countvectorizer.predict(X_test_cv)
     # append eval df
-    eval_df = append_eval_df('DecisionTree_Just_Countvectorizer', accuracy_score(train.actual, train.predicted_Xcv),\
+    ev10 = append_eval_df('DecisionTree_Just_Countvectorizer', accuracy_score(train.actual, train.predicted_Xcv),\
                             accuracy_score(validate.actual, validate.predicted_Xcv))
     # Count Vectorizer Plus Features
     ################################
@@ -239,7 +239,7 @@ def run_modeling():
     validate['predicted_Xcv_plus_features'] = clf_countvectorizer_plus_features.predict(X_validate_cv_plusfeatures)
     test['predicted_Xcv_plus_features'] = clf_countvectorizer_plus_features.predict(X_test_cv_plusfeatures)
     # append eval df
-    eval_df = append_eval_df('DecisionTree_CountVectorizere_PlusFeatures', accuracy_score(train.actual, train.predicted_Xcv_plus_features),\
+    ev11 = append_eval_df('DecisionTree_CountVectorizere_PlusFeatures', accuracy_score(train.actual, train.predicted_Xcv_plus_features),\
                             accuracy_score(validate.actual, validate.predicted_Xcv_plus_features))
     print('DT done')
 
@@ -256,7 +256,7 @@ def run_modeling():
     train['predicted_rf_just_features'] = rf_just_features.predict(X_train)
     validate['predicted_rf_just_features'] = rf_just_features.predict(X_validate)
     #  append eval df
-    eval_df = append_eval_df('RandomForest_Just_Features', accuracy_score(train.actual, train.predicted_rf_just_features),\
+    ev12 = append_eval_df('RandomForest_Just_Features', accuracy_score(train.actual, train.predicted_rf_just_features),\
                             accuracy_score(validate.actual, validate.predicted_rf_just_features))
     # TF-IDF alone
     ##############
@@ -267,7 +267,7 @@ def run_modeling():
     validate['predicted_rf_tfidf'] = rf_tfidf.predict(X_validate_tfidf)
     test['predicted_rf_tfidf'] = rf_tfidf.predict(X_test_tfidf)
     # append eval df
-    eval_df = append_eval_df('RandomForest_Just_TFIDF', accuracy_score(train.actual, train.predicted_rf_tfidf),\
+    ev13 = append_eval_df('RandomForest_Just_TFIDF', accuracy_score(train.actual, train.predicted_rf_tfidf),\
                             accuracy_score(validate.actual, validate.predicted_rf_tfidf))
     #  TF-IDF Plus Features
     #######################
@@ -278,7 +278,7 @@ def run_modeling():
     validate['RF_predicted_Xtfidf_plusfeatures'] = rf_tfidf_plus_features.predict(X_validate_tfidf_plusfeatures)
     test['RF_predicted_Xtfidf_plusfeatures'] = rf_tfidf_plus_features.predict(X_test_tfidf_plusfeatures)
     # append eval df
-    eval_df = append_eval_df('RandomForest_TFIDF_PlusFeatures', accuracy_score(train.actual, train.RF_predicted_Xtfidf_plusfeatures),\
+    ev14 = append_eval_df('RandomForest_TFIDF_PlusFeatures', accuracy_score(train.actual, train.RF_predicted_Xtfidf_plusfeatures),\
                             accuracy_score(validate.actual, validate.RF_predicted_Xtfidf_plusfeatures))
     # Count Vectorizer Alone
     ################################
@@ -289,8 +289,9 @@ def run_modeling():
     validate['predicted_Xcv'] = rf_countvectorizer.predict(X_validate_cv)
     test['predicted_Xcv'] = rf_countvectorizer.predict(X_test_cv)
     # append eval df
-    eval_df = append_eval_df('RandomForest_Just_CountVectorizer', accuracy_score(train.actual, train.predicted_Xcv),\
+    ev15 = append_eval_df('RandomForest_Just_CountVectorizer', accuracy_score(train.actual, train.predicted_Xcv),\
                             accuracy_score(validate.actual, validate.predicted_Xcv))
+
     # Count Vectorizer Plus Features
     ################################
     #model
@@ -300,11 +301,13 @@ def run_modeling():
     validate['predicted_Xcv_plus_features'] = rf_countvectorizer_plus_features.predict(X_validate_cv_plusfeatures)
     test['predicted_Xcv_plus_features'] = rf_countvectorizer_plus_features.predict(X_test_cv_plusfeatures)
     # append eval df
-    eval_df = append_eval_df('RandomForest_CountVectorizer_Plus_Features', accuracy_score(train.actual, train.predicted_Xcv_plus_features),\
+    ev16 = append_eval_df('RandomForest_CountVectorizer_Plus_Features', accuracy_score(train.actual, train.predicted_Xcv_plus_features),\
                             accuracy_score(validate.actual, validate.predicted_Xcv_plus_features))
     print('RF done')
 
     ######################################
     ###### DISPLAY EVAL DF ###############
     ######################################
+    eval_df = eval_df.append(ev1).append(ev2).append(ev3).append(ev4).append(ev5).append(ev6).append(ev7)\
+    .append(ev8).append(ev9).append(ev10).append(ev11).append(ev12).append(ev13).append(ev14).append(ev15).append(ev16)
     return eval_df

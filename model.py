@@ -31,7 +31,7 @@ def append_eval_df(model_type, train_accuracy, validate_accuracy):
     d = {'Model_Type': [model_type],'Train_Accuracy':[train_accuracy], \
         'Validate_Accuracy': [validate_accuracy], \
             'Accuracy_Difference': [train_accuracy - validate_accuracy], \
-                'Beats_Baseline_By':[validate_accuracy - 0.500614]}  # let's try to do this programatically
+                'Beats_Baseline_By':[validate_accuracy - (1-0.37535714285714283)]}  # let's try to do this programatically
     d = pd.DataFrame(d)
     return eval_df.append(d, ignore_index = True)
 
@@ -43,8 +43,9 @@ def run_modeling():
 
     # Define the df
     df = wrangle.get_npr_data()
-    df['question_mark_count'] = df.utterance.str.count(r"[\?]")
-    df['utterance_word_count'] = df.utterance.apply(str.split).apply(len)
+    # Add two columns that weren't where expected
+    df['question_mark_count'] = df.utterance.str.count(r"[\?]")  # counts question marks
+    df['utterance_word_count'] = df.utterance.apply(str.split).apply(len) # length of  utterance
 
     # sample down due to size issuees
     small_df = df.sample(100_000, random_state=222)
@@ -55,7 +56,7 @@ def run_modeling():
     # limiting our df to only speakers with 3 or more utterances. This helped wheen stratifying the splits
     rest = small_df[~small_df['speaker'].isin(counts[counts < 3].index)]
     ############################# BUT IT'S GOOD CODE FOR REFERENCE ###############################
-    
+
     # get initial splits based no "rest", which is a sampled-down df with speakers with 2 or less observations removed
     train, validate, test = wrangle.split_data(small_df)
     print(f"train shape is {train.shape}")
@@ -115,15 +116,13 @@ def run_modeling():
         pd.DataFrame(X_test.utterance_order),pd.DataFrame(X_test.vader),pd.DataFrame(X_test.utterance_word_count)))
     print('Count Vectorizer Splits Created')
 
-    # create baseline on mode (is_host == True)
-    train['baseline_pred'] = True
-    validate['baseline_pred'] = True
-    test['baseline_pred'] = True
+    # create baseline on mode (is_host == False)
+    train['baseline_pred'] = False
+    validate['baseline_pred'] = False
+    test['baseline_pred'] = False
 
     # append to eval df
     ev1 = append_eval_df('baseline_pred', accuracy_score(train.is_host, train.baseline_pred),accuracy_score(validate.is_host, validate.baseline_pred))
-
-    # for the modeling portion...we're gonna have to get all the lm variables togethere and disambiguate
 
     #######################
     # LOGISTIC REGRESSION #

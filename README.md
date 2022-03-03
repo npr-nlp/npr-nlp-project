@@ -96,6 +96,7 @@ This datset provides ample opportunities for exploration, and any number could b
 - Continued trimming by adding stopwords
 - Expore the effect of the question mark count--is this an example of target leakage? Or just low-hanging fruit?
 - Coninuing exploration of the corpuses such as Part of Speech analysis
+- Use different word vector models for the LDA analysis-> GoogleNews-vectors, different spaCy models
 - Etc.
 
 ## A Note on the Source Data

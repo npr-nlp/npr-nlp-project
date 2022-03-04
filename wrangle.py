@@ -56,6 +56,10 @@ def get_npr_data():
     hosts = host_map.name.to_list()
     hosts.append('neal conan')
     df['is_host'] = df.speaker.isin(hosts)
+    
+    #drop nulls
+    df.dropna(inplace = True)
+    
     return df
 
 def split_data(df):

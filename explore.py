@@ -11,6 +11,7 @@ from nltk.tokenize.toktok import ToktokTokenizer
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from wordcloud import WordCloud
+from sklearn.cluster import KMeans
 
 import wrangle
 import acquire
@@ -236,6 +237,29 @@ def elbow_method(df):
     """
     This function produces a curve showing the most optimal k point.
     """
+# create continuous variables easily available to us
+    df['message_length'] = df.clean.apply(len)
+    df['word_count'] = df.clean.apply(str.split).apply(len)
+    df['question_mark_count'] = df.utterance.str.count(r"[\?]")
+
+    df2 = df.sample(10000, random_state = 222)
+
+    train, validate, test = wrangle.split_data(df2)
+    # split
+    scaler, train_scaled, validate_scaled, test_scaled = min_max_scaler(train, validate, test)
+    # define features for clustering
+    X_train_cluster = train_scaled[['vader', 'word_count','question_mark_count']]
+
+    #repeat for validate and test
+    X_validate_cluster = validate_scaled[['vader', 'word_count','question_mark_count']]
+    X_test_cluster = test_scaled[['vader', 'word_count','question_mark_count']]
+    # define cluster object
+    kmeans = KMeans(n_clusters=4, random_state = 333)
+    # fit cluster object to features
+    kmeans.fit(X_train_cluster)
+    # use the object
+    kmeans.predict(X_train_cluster);
+    
     with plt.style.context('seaborn-whitegrid'):
         plt.figure(figsize = (10, 10))
         pd.Series({k: KMeans(k).fit(X_train_cluster).inertia_ for k in range(2, 12)}).plot(marker='x')
@@ -248,6 +272,29 @@ def k_clusters(df):
     """
     This function produces four subplots with different number of clusters on each subplot.
     """
+    # create continuous variables easily available to us
+    df['message_length'] = df.clean.apply(len)
+    df['word_count'] = df.clean.apply(str.split).apply(len)
+    df['question_mark_count'] = df.utterance.str.count(r"[\?]")
+
+    df2 = df.sample(10000, random_state = 222)
+
+    train, validate, test = wrangle.split_data(df2)
+    # split
+    scaler, train_scaled, validate_scaled, test_scaled = min_max_scaler(train, validate, test)
+    # define features for clustering
+    X_train_cluster = train_scaled[['vader', 'word_count','question_mark_count']]
+
+    #repeat for validate and test
+    X_validate_cluster = validate_scaled[['vader', 'word_count','question_mark_count']]
+    X_test_cluster = test_scaled[['vader', 'word_count','question_mark_count']]
+    # define cluster object
+    kmeans = KMeans(n_clusters=4, random_state = 333)
+    # fit cluster object to features
+    kmeans.fit(X_train_cluster)
+    # use the object
+    kmeans.predict(X_train_cluster);
+    
     fig, axs = plt.subplots(2, 2, figsize=(13, 13), sharex=True, sharey=True)
 
     for ax, k in zip(axs.ravel(), range(4, 8)):

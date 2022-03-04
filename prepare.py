@@ -7,6 +7,14 @@ import nltk.sentiment
 from nltk.tokenize.toktok import ToktokTokenizer
 from nltk.corpus import stopwords
 
+def string_cleaning(s):
+    '''
+    Function to remove punctuation from word frequencies for hosts.
+    '''
+    # remove special characters
+    s = re.sub(r"[^a-z0-9'\s\?]", '', s)
+
+    return s
 
 def basic_clean(s):
     '''

@@ -26,6 +26,18 @@ def top_npr_speakers(df):
     plt.rc('font', size = 14)
     plt.xticks(rotation = 45);
 
+def speaker_count(df):
+    # create a question mark count column
+    df['question_mark_count'] = df.utterance.str.count(r"[\?]")
+
+    # extract the total number of question marks for every given speaker, display top ten
+    return df[['speaker','question_mark_count']].groupby(['speaker'])['question_mark_count'] \
+                                 .count() \
+                                 .reset_index(name='count') \
+                                 .sort_values(['count'], ascending=False) \
+                                 .head(10).T
+    
+    
 def npr_host_vs_guest(df):
     """
     This function produces a visualization comparing the question count of hosts vs guests.
@@ -207,5 +219,40 @@ def program_sentiment(df):
      'Weekend Edition Saturday'], prop = {'size': 20});    
     
     
+def min_max_scaler(train, valid, test):
+    '''
+    Uses the train & test datasets created by the split_my_data function
+    Returns 3 items: mm_scaler, train_scaled_mm, test_scaled_mm
+    This is a linear transformation. Values will lie between 0 and 1
+    '''
+    num_vars = list(train.select_dtypes('number').columns)
+    scaler = MinMaxScaler(copy=True, feature_range = (0,1))
+    train[num_vars] = scaler.fit_transform(train[num_vars])
+    valid[num_vars] = scaler.transform(valid[num_vars])
+    test[num_vars] = scaler.transform(test[num_vars])
+    return scaler, train, valid, test
+
+def elbow_method(df):
+    """
+    This function produces a curve showing the most optimal k point.
+    """
+    with plt.style.context('seaborn-whitegrid'):
+        plt.figure(figsize = (10, 10))
+        pd.Series({k: KMeans(k).fit(X_train_cluster).inertia_ for k in range(2, 12)}).plot(marker='x')
+        plt.xticks(range(2, 12))
+        plt.xlabel('k')
+        plt.ylabel('inertia')
+        plt.title('Change in inertia as k increases')
+        
+def k_clusters(df):
+    """
+    This function produces four subplots with different number of clusters on each subplot.
+    """
+    fig, axs = plt.subplots(2, 2, figsize=(13, 13), sharex=True, sharey=True)
+
+    for ax, k in zip(axs.ravel(), range(4, 8)):
+        clusters = KMeans(k).fit(X_train_cluster).predict(X_train_cluster)
+        ax.scatter(X_train_cluster.vader, X_train_cluster.word_count, c=clusters)
+        ax.set(title='k = {}'.format(k), xlabel='vader', ylabel='word_count')
     
     

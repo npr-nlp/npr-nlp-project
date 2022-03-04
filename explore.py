@@ -16,7 +16,17 @@ import wrangle
 import acquire
 from prepare import basic_clean, tokenize, lemmatize, stem, remove_stopwords, prep_string_data
 
-def npr_host_vs_guest():
+def top_npr_speakers(df):
+    """
+    This function produces a visualization of the top 10 hosts from NPR.
+    """
+    df.speaker[df.is_host == True].value_counts().head(10).plot.bar(title = 'Top 10 NPR Speakers', 
+                                                                    ec = 'black',
+                                                                   figsize = (18, 12))
+    plt.rc('font', size = 14)
+    plt.xticks(rotation = 45);
+
+def npr_host_vs_guest(df):
     """
     This function produces a visualization comparing the question count of hosts vs guests.
     """
@@ -39,7 +49,7 @@ def npr_host_vs_guest():
     viz.set_ylabel('Count of Questions', fontsize = 13)
     viz.set_title('Do NPR hosts ask more questions than guests?', fontsize = 17);
     
-def avg_sentiment_top_speakers():
+def avg_sentiment_top_speakers(df):
     """
     This function produces a visualization of the top 10 speakers average sentiment score.
     """
@@ -60,7 +70,7 @@ def avg_sentiment_top_speakers():
     viz.set_ylabel('Vader Score', fontsize = 13)
     plt.xticks(rotation = 45);
     
-def sentiment_host_nonhost():
+def sentiment_host_nonhost(df):
     """
     This function produces a visualization comparing the average sentiment of hosts vs non-hosts.
     """
@@ -74,7 +84,7 @@ def sentiment_host_nonhost():
     viz.set_ylabel('Mean Sentiment Score', fontsize = 13)
     viz.set_title('Mean Sentiment Score for Hosts vs Non-Hosts', fontsize = 17);    
     
-def episode_sentiment_year():
+def episode_sentiment_year(df):
     """
     This function changes the date to a datetime object, sets it as the index and 
     produces a visualization of the yearly resampled sentiment score.
@@ -98,7 +108,33 @@ def episode_sentiment_year():
 
     viz_df.reset_index(inplace = True);
 
-def episode_sentiment_weekday():
+
+def episode_sentiment_month(df):
+    """
+    This function changes the date to a datetime object, sets it as the index and 
+    produces a visualization of the monthly resampled sentiment score.
+    """
+    # set date to datetime
+    viz_df = df.copy()
+
+    viz_df['date'] = pd.to_datetime(df.date)
+
+    # set date to index
+    viz_df = viz_df.set_index('date').sort_index()
+
+    # resample vader score by year
+    viz_df.resample('Y').vader.mean()
+
+    # create monthly vader df
+    vader_monthly = pd.DataFrame(viz_df.resample('M').vader.mean())
+
+    # and plot
+    vader_monthly.plot(figsize = (12, 8), title = 'Episode Sentiment Score by Month - 2005 Through 2019')
+
+    viz_df.reset_index(inplace = True);
+    
+    
+def episode_sentiment_weekday(df):
     """
     This function changes the date to a datetime object, sets it as the index and 
     produces a visualization of the mean sentiment score by day of the week.
@@ -129,7 +165,7 @@ def episode_sentiment_weekday():
 
     viz_df.reset_index(inplace = True);
     
-def program_sentiment():
+def program_sentiment(df):
     """
     This function changes the date to a datetime object, sets it as the index and 
     produces a visualization of the resampled average sentiment by program.

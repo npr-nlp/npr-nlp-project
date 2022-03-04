@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.cluster import KMeans
 
 import nltk
 import nltk.sentiment

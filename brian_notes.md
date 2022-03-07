@@ -68,4 +68,11 @@ Put answers to these questions in your standup doc (link in Google Classroom)
 
 ## Moving forward things:
     - remove oddball speakers (where text has found its way into the speaker box)
-    - Do a better job d
+
+
+## Tools used
+    - Gensim
+    - spaCy
+    - matplotlib
+    - seaborn
+    - sklearn

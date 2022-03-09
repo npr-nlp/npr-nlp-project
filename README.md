@@ -23,17 +23,34 @@ The ultimate goal of this project is to build a model that predicts whether an u
 
 | variable      | meaning       |
 | ------------- |:-------------:|
-| sentiment | our target variable, created by sentiment analysis of NPR interviews |
-| episode | each observation in our data is representative of each interview |
-| episode_id | identification number for each episode |
-| episode_date | date the episode was uploaded |
-| episode_order | order the interview occurred |
-| program | name of NPR program |
-| headline | article's headline |
-| is_host | whether the speaker is speaking as a host |
+| story_id_num | identification number for each episode |
+| utterance_order | turn number within episode |
+| speaker | individual that is speaking during the utterance |
 | utterance | utterance text |
-| speaker | individual that is speaking during the utterance | 
+| program | name of NPR program |
 | title | name of the interview/article | 
+| is_host | our target variable, whether the speaker is speaking as a host |
+| clean | cleaned version of utterance column |
+| lemmatized | lemmatized version of utterance column |
+| vader | created by sentiment analysis of NPR interviews |
+| date | date the episode was uploaded |
+| question_mark_count |
+| utterance_word_count |
+| actual |
+| baseline_pred |
+| predicted_X_just_features |
+| predicted_Xtfidf |
+| predicted_Xtfidf_plusfeatures |
+| predicted_X_cv |
+| predicted_X_cv_plus_features |
+| predicted_clf_just_features |
+| predicted_clf_tfidf |
+| CLF_predicted_Xtfidf_plusfeatures |
+| predicted_Xcv |
+| predicted_Xcv_plus_features |
+| predicted_rf_just_features |
+| predicted_rf_tfidf |
+| RF_predicted_Xtfidf_plusfeatures |
 
 
 ## Missing values:

@@ -4,6 +4,9 @@ from sklearn.cluster import KMeans
 from sklearn.model_selection import learning_curve
 from sklearn.preprocessing import MinMaxScaler
 from mpl_toolkits.mplot3d import Axes3D
+import wrangle
+import matplotlib as plt
+import seaborn as sns
 
 def min_max_scaler(train, valid, test):
     '''
@@ -45,7 +48,7 @@ def get_clusters(df, sample_size = 10_000):
     validate_scaled['cluster'] = kmeans.predict(X_validate_cluster)
     test_scaled['cluster'] = kmeans.predict(X_test_cluster)
     X_train_cluster['cluster'] = kmeans.predict(X_train_cluster)
-    return train_scaled, validate_scaled, test_scaled, X_train_clsuter
+    return train, validate, test, train_scaled, validate_scaled, test_scaled, X_train_cluster
 
 
 def plot_clusters(X_train_cluster):

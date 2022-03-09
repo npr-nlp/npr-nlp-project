@@ -60,7 +60,10 @@ The files required to reproduce are availabe at:
 https://www.kaggle.com/shuyangli94/interview-npr-media-dialog-transcripts
 The only files used in this study were "utterrances.csv", and "episodes.csv", which we downloaded on 2/2/22.
 
-As an alternative, considering the huge size of the files involved, a copy of the final .csv resulting from all wrangling can be downloaded at https://drive.google.com/file/d/1RANtH1IS5iDmlUOigKMMG8EQOgh6dkNp/view?usp=sharing.
+As an alternative, considering the huge size of the files involved, a copy of the final .csv resulting from all wrangling can be downloaded at https://drive.google.com/file/d/1RANtH1IS5iDmlUOigKMMG8EQOgh6dkNp/view?usp=sharing
+
+A csv with the dataframe aggregated by story is at the following link, and will also be required:
+https://drive.google.com/file/d/1IGRwXQw_ruGanvQycfQRuX7KfaeuV5Hk/view?usp=sharing
 
 All other necessary files can be cloned along with the rest of the project at the project's github:
 https://github.com/npr-nlp/npr-nlp-project

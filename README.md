@@ -85,7 +85,7 @@ https://drive.google.com/file/d/1IGRwXQw_ruGanvQycfQRuX7KfaeuV5Hk/view?usp=shari
 All other necessary files can be cloned along with the rest of the project at the project's github:
 https://github.com/npr-nlp/npr-nlp-project
 
-Installations required: NTLK; Gensim; spaCy; the standard Pandas libraries.
+Installations required: NTLK; Gensim; spaCy; pyLDAvis; and the standard Python libraries.
 
 With these installations complete, and once the repository is cloned and the final csv downloaded, the notebook should run with no issues.
 

@@ -34,23 +34,23 @@ The ultimate goal of this project is to build a model that predicts whether an u
 | lemmatized | lemmatized version of utterance column |
 | vader | created by sentiment analysis of NPR interviews |
 | date | date the episode was uploaded |
-| question_mark_count |
-| utterance_word_count |
-| actual |
-| baseline_pred |
-| predicted_X_just_features |
-| predicted_Xtfidf |
-| predicted_Xtfidf_plusfeatures |
-| predicted_X_cv |
-| predicted_X_cv_plus_features |
-| predicted_clf_just_features |
-| predicted_clf_tfidf |
-| CLF_predicted_Xtfidf_plusfeatures |
-| predicted_Xcv |
-| predicted_Xcv_plus_features |
-| predicted_rf_just_features |
-| predicted_rf_tfidf |
-| RF_predicted_Xtfidf_plusfeatures |
+| question_mark_count |  |
+| utterance_word_count |  |
+| actual |  |
+| baseline_pred |  |
+| predicted_X_just_features |  |
+| predicted_Xtfidf |  |
+| predicted_Xtfidf_plusfeatures |  |
+| predicted_X_cv |  |
+| predicted_X_cv_plus_features |  |
+| predicted_clf_just_features |  |
+| predicted_clf_tfidf |  |
+| CLF_predicted_Xtfidf_plusfeatures |  |
+| predicted_Xcv |  |
+| predicted_Xcv_plus_features |  |
+| predicted_rf_just_features |  |
+| predicted_rf_tfidf |  |
+| RF_predicted_Xtfidf_plusfeatures |  |
 
 
 ## Missing values:

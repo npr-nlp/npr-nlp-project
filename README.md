@@ -34,8 +34,8 @@ The ultimate goal of this project is to build a model that predicts whether an u
 | lemmatized | lemmatized version of utterance column |
 | vader | created by sentiment analysis of NPR interviews |
 | date | date the episode was uploaded |
-| question_mark_count |  |
-| utterance_word_count |  |
+| question_mark_count | feature created out of the number of question marks in the corpus |
+| utterance_word_count | feature created out of the number of words in the corpus |
 | actual |  |
 | baseline_pred |  |
 | predicted_X_just_features |  |

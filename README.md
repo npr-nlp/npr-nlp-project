@@ -36,21 +36,21 @@ The ultimate goal of this project is to build a model that predicts whether an u
 | date | date the episode was uploaded |
 | question_mark_count | feature created out of the number of question marks in the corpus |
 | utterance_word_count | feature created out of the number of words in the corpus |
-| actual |  |
-| baseline_pred |  |
-| predicted_X_just_features |  |
-| predicted_Xtfidf |  |
-| predicted_Xtfidf_plusfeatures |  |
-| predicted_X_cv |  |
-| predicted_X_cv_plus_features |  |
-| predicted_clf_just_features |  |
-| predicted_clf_tfidf |  |
-| CLF_predicted_Xtfidf_plusfeatures |  |
-| predicted_Xcv |  |
-| predicted_Xcv_plus_features |  |
-| predicted_rf_just_features |  |
-| predicted_rf_tfidf |  |
-| RF_predicted_Xtfidf_plusfeatures |  |
+| actual | feature created from whether the speaker of a line is an NPR host or not |
+| baseline_pred | baseline prediction |
+| predicted_X_just_features | prediction from modeling including features |
+| predicted_Xtfidf | prediction from modeling using TF-IDF |
+| predicted_Xtfidf_plusfeatures | prediction from modeling using TF-IDF and features |
+| predicted_X_cv | prediction from modeling using count vectorizer |
+| predicted_X_cv_plus_features | prediction from modeling using count vectorizer and features |
+| predicted_clf_just_features | prediction from modeling using features |
+| predicted_clf_tfidf | prediction from modeling using TF-IDF |
+| CLF_predicted_Xtfidf_plusfeatures | prediction from modeling using TF-IDF and features |
+| predicted_Xcv | prediction from modeling using Count Vectorizer |
+| predicted_Xcv_plus_features | prediction from modeling using Count Vectorizer and features |
+| predicted_rf_just_features | prediction from modeling using features |
+| predicted_rf_tfidf | prediction from modeling using TF-IDF |
+| RF_predicted_Xtfidf_plusfeatures | prediction from modeling using TF-IDF and features |
 
 
 ## Missing values:
